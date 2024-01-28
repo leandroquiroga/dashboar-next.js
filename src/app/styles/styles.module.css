@@ -1,0 +1,10 @@
+.pokeCard{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, auto));
+  column-gap: 15px;
+  row-gap: 15px;
+  place-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
