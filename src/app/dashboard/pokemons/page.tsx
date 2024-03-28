@@ -1,10 +1,6 @@
-import { PokeCard, ResponseApiPoket, SimplePokemon } from "@/app/pokemons";
-import styles from '../../styles/styles.module.css'
+import { PokeCard, ResponseApiPoket, SimplePokemon } from "@/pokemons";
+import styles from "../../styles/styles.module.css"
 
-interface GetPokemonsProps {
-  limit?: number, 
-  offset?: number
-}
 
 const getPokemons = async ( limit = 20, offset = 0):Promise<SimplePokemon[]> => {
   
@@ -16,7 +12,6 @@ const getPokemons = async ( limit = 20, offset = 0):Promise<SimplePokemon[]> => 
     name: pokemon.name
   }));
 
-  throw new Error('Fallo la peticion al querer obtener los pokemon')
   return pokemons;
 };
 
@@ -25,12 +20,12 @@ export default async function PokemonsPage() {
 
   const pokemons = await getPokemons(151)
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col p-2">
       <h1 className="text-4xl my-2">Listado de Pokemons</h1>
 
-      <div className={`${styles.pokeCard}`}>
+      <div className={`${styles.pokeCardPage}`}>
         {pokemons.map((pokemon) => (
-          <PokeCard pokemon={pokemon} key={pokemon.id} />
+          <PokeCard key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
     </div>
