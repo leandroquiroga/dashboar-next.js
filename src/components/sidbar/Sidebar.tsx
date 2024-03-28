@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import React from 'react'
-import { RiDashboardLine, RiCalculatorLine, RiArticleLine, RiFootballLine } from 'react-icons/ri';
+import { RiDashboardLine, RiCalculatorLine, RiArticleLine, RiFootballLine, RiHeart2Line } from 'react-icons/ri';
 import { SidebarMenuItems } from './SidebarMenuItems';
+
+
 
 const menuItem = [
   {
@@ -21,6 +23,12 @@ const menuItem = [
     path: "/dashboard/pokemons",
     subtitle: "Pokemon Page",
     title: "Pokemon",
+  },
+  {
+    icon: <RiHeart2Line size={30} />,
+    path: "/dashboard/favorites",
+    subtitle: "Favorite Page",
+    title: "Favorites",
   },
 ];
 
