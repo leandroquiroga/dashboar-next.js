@@ -1,5 +1,7 @@
 
 //Components
+export { FavoritePokemon } from './components/FavoritePokemon';
+export { NotFavorites } from './components/NotFavorites';
 export { PokeCard } from './components/PokeCard';
 
 
