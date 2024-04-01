@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import counterReducer from './counter/CounterSlice';
-import favouritesPokemonsReducer from './favourite/pokemons';
+import favoritesPokemonsReducer from './favorite/pokemons';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 // Configuracion del store
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    favouritesPokemons: favouritesPokemonsReducer,
+    favoritesPokemons: favoritesPokemonsReducer,
   }, //TODO: Agregar los reducers, hojas de nuestro store
 });
 

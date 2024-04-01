@@ -1,5 +1,5 @@
-import { PokeCard, ResponseApiPoket, SimplePokemon } from "@/pokemons";
-import styles from "../../styles/styles.module.css"
+import { ResponseApiPoket, SimplePokemon } from "@/pokemons";
+import { PokemonGrid } from "@/pokemons/components/PokemonGrid";
 
 
 const getPokemons = async ( limit = 20, offset = 0):Promise<SimplePokemon[]> => {
@@ -22,12 +22,7 @@ export default async function PokemonsPage() {
   return (
     <div className="flex flex-col p-2">
       <h1 className="text-4xl my-2">Listado de Pokemons</h1>
-
-      <div className={`${styles.pokeCardPage}`}>
-        {pokemons.map((pokemon) => (
-          <PokeCard key={pokemon.id} pokemon={pokemon} />
-        ))}
-      </div>
+      <PokemonGrid pokemons={pokemons} />
     </div>
   );
 }
