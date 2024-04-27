@@ -1,24 +1,23 @@
-'use client';
+"use client";
 
-import React from 'react'
-import Image from 'next/image';
-import { RiHeart2Line, RiHeart2Fill ,RiBarChartFill } from 'react-icons/ri';
-import Link from 'next/link';
+import React from "react";
+import Image from "next/image";
+import { RiHeart2Line, RiHeart2Fill, RiBarChartFill } from "react-icons/ri";
+import Link from "next/link";
 
-
-import { SimplePokemon } from '../index';
-import { useAppDispatch, useAppSelector } from '@/store';
-import { toggleFavoritePokemon } from '@/store/favorite/pokemons';
-
+import { SimplePokemon } from "../index";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { toggleFavoritePokemon } from "@/store/favorite/pokemons";
 
 interface PokeCardProps {
   pokemon: SimplePokemon;
 }
 
 export const PokeCard = ({ pokemon }: PokeCardProps) => {
-
-  const { id, name } = pokemon
-  const isFavourite = useAppSelector((state) => !!state.favoritesPokemons[id]);
+  const { id, name } = pokemon;
+  const isFavourite = useAppSelector(
+    (state) => !!state.favoritesPokemons.favourite[id]
+  );
   const dispatch = useAppDispatch();
 
   const onToggle = () => {
@@ -30,6 +29,7 @@ export const PokeCard = ({ pokemon }: PokeCardProps) => {
       <div className="bg-white rounded overflow-hidden shadow-lg h-100 p-2">
         <div className="text-center p-6 bg-gray-800 border-b">
           <Image
+            priority
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
             width={80}
             height={80}
@@ -47,7 +47,7 @@ export const PokeCard = ({ pokemon }: PokeCardProps) => {
                 </div> */}
         </div>
         <div className="border-b">
-          <div
+          <button
             onClick={onToggle}
             className="px-4 py-2 hover:bg-gray-100 flex cursor-pointer">
             <div className="text-red-600">
@@ -59,7 +59,7 @@ export const PokeCard = ({ pokemon }: PokeCardProps) => {
                 {isFavourite ? "Favorito" : "Añadir a favoritos"}
               </p>
             </div>
-          </div>
+          </button>
           <Link
             href="/dashboard/counter"
             className="px-4 py-2 hover:bg-gray-100 flex">

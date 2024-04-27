@@ -19,8 +19,8 @@ export async function generateStaticParams() {
   const staticPokemon = response.results.map((pokemon) => ({
     name: pokemon.name,
   }));
-  
-  return staticPokemon.map(({name}) => ({ name: name }));
+
+  return staticPokemon.map(({ name }) => ({ name: name }));
 }
 
 /**
@@ -66,8 +66,8 @@ const getPokemon = async (name: string): Promise<Pokemon> => {
   }
 };
 
-export default async function PokemonPage({ params }: PokemonPageProps){
-  const pokemon = await getPokemon(params.name)
+export default async function PokemonPage({ params }: PokemonPageProps) {
+  const pokemon = await getPokemon(params.name);
 
   return (
     <div className="flex mt-5 flex-col items-center text-slate-800">

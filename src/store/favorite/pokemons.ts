@@ -1,42 +1,41 @@
-import { SimplePokemon } from '@/pokemons';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { SimplePokemon } from "@/pokemons";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
-export interface FavouritePokemon {
+type FavouritesType = {
   [key: string]: SimplePokemon;
+};
+export interface FavouritePokemon {
+  favourite: FavouritesType;
+}
+
+const getInitialState = () => {
+  if (typeof window === "undefined") return {};
+  const favourite = JSON.parse(localStorage.getItem("favourite") ?? "{}");
+  return favourite;
 };
 
 const initialState: FavouritePokemon = {
-  // "1": {
-  //   id: "1",
-  //   name: "bulbasaur",
-  // },
-  // "4": {
-  //   id: "4",
-  //   name: "charmander",
-  // },
-  // "7": {
-  //   id: "7",
-  //   name: "squirtle",
-  // },
+  favourite: {},
+  // ...getInitialState(),
 };
 
 const favoritePokemonsSlice = createSlice({
-  name: 'favoritePokemons',
+  name: "favoritePokemons",
   initialState,
   reducers: {
-
     toggleFavoritePokemon: (state, action: PayloadAction<SimplePokemon>) => {
       const pokemon = action.payload;
       const { id } = pokemon;
-      
+
       // Chequamos si el id existe con la doble negacion. Si existe, lo eliminamos
-      if (!!state[id]) { 
-        delete state[id];
-        return;
+      if (!!state.favourite[id]) {
+        delete state.favourite[id];
+      } else {
+        // Si no existe, lo agregamos
+        state.favourite[id] = pokemon;
       }
-      // Si no existe, lo agregamos
-      state[id] = pokemon;
+
+      localStorage.setItem("favourite", JSON.stringify(state.favourite));
     },
   },
 });
