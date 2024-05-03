@@ -12,7 +12,8 @@ const nextConfig = {
         protocol: "https",
         hostname: "raw.githubusercontent.com",
         port: "",
-        pathname: "/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/**",
+        pathname:
+          "/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/**",
       },
       {
         protocol: "https",
@@ -20,8 +21,14 @@ const nextConfig = {
         port: "",
         pathname: "/PokeAPI/sprites/master/sprites/pokemon/**",
       },
+      {
+        protocol: "https",
+        hostname: "icons8.com",
+        port: "",
+        pathname: "/preloaders/preloaders/1488/Iphone-spinner-2.gif",
+      },
     ],
   },
 };
 
-module.exports = nextConfig
+module.exports = nextConfig;

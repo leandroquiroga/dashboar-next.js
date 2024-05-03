@@ -16,9 +16,5 @@ export const Providers = ({ children }: Props): JSX.Element => {
     store.dispatch(setFavouritePokemons(favotites));
   }, []);
 
-  return (
-    <Provider store={ store }>
-      { children }
-    </Provider>
-  )
+  return <Provider store={store}>{children}</Provider>;
 };

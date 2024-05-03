@@ -4,43 +4,39 @@ import Image from "next/image";
 import { Pokemon } from "@/pokemons";
 import { notFound } from "next/navigation";
 
-
 interface PokemonPageProps {
-  params: {id: string}
-};
-
+  params: { id: string };
+}
 
 /**
  * Construye 151 pokemons por defecto en tiempo de compilacion
-*/
-export async function generateStaticParams(){
+ */
+export async function generateStaticParams() {
   const staticPokemon = Array.from({ length: 151 }).map(
-    (_value, index) => `${index + 1}` // Se regresa como un string porque en mis params estoy esperando un string. 
+    (_value, index) => `${index + 1}` // Se regresa como un string porque en mis params estoy esperando un string.
   );
 
-  return staticPokemon.map(id => ({ id: id }));
+  return staticPokemon.map((id) => ({ id: id }));
 }
 
-
-
 /**
- * El generateMetadata nos permite desde el lado del servidor crear metadata dinamicas, 
- * este codigo solo se ejecutara solo y cuando se cree una pagina nuevo. 
+ * El generateMetadata nos permite desde el lado del servidor crear metadata dinamicas,
+ * este codigo solo se ejecutara solo y cuando se cree una pagina nuevo.
  */
 
-export async function generateMetadata({ params }: PokemonPageProps): Promise<Metadata> {
-  
+export async function generateMetadata({
+  params,
+}: PokemonPageProps): Promise<Metadata> {
   try {
-    
     const { id, name } = await getPokemon(params.id);
     return {
-        title: `#${id} - ${name}`,
-        description: `Pagína de pokémon ${name}`
-      }
+      title: `#${id} - ${name}`,
+      description: `Pagína de pokémon ${name}`,
+    };
   } catch (error) {
     return {
-      title: 'Pokémon no encontrado',
-      description: 'No existe el pokemon que se intenta buscar'
+      title: "Pokémon no encontrado",
+      description: "No existe el pokemon que se intenta buscar",
     };
   }
 }
@@ -50,22 +46,21 @@ export async function generateMetadata({ params }: PokemonPageProps): Promise<Me
  * Utilizamos revalidate para que cada vez que cumpla el tiempo asignado, se revalide la informacion nueva.
  */
 const getPokemon = async (id: string): Promise<Pokemon> => {
-
   try {
-    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`,{
-      // cache: "force-cache", 
+    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+      // cache: "force-cache",
       next: {
-        revalidate: 60 * 60 * 30 * 6 // 
-      }  
+        revalidate: 60 * 60 * 30 * 6, //
+      },
     }).then((res) => res.json());
-  
-    console.log('Se cargo:', pokemon.name);
-  
+
+    console.log("Se cargo:", pokemon.name);
+
     return pokemon;
   } catch (error) {
-    notFound()
+    notFound();
   }
-}
+};
 
 export default async function PokemonPage({ params }: PokemonPageProps) {
   const pokemon = await getPokemon(params.id);

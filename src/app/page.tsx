@@ -1,11 +1,8 @@
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation";
 
 export default function HomePage() {
-
   // Rederigimos a una page por default
-  redirect('/dashboard/main');
+  redirect("/dashboard/main");
 
-  return (  
-    <h1>Hola mundo</h1>
-  )
+  return <h1>Hola mundo</h1>;
 }

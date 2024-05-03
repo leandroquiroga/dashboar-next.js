@@ -1,5 +1,7 @@
+import React, { Suspense } from "react";
 import { Metadata } from "next";
 import { FavoritePokemon } from "@/pokemons";
+import { Spinner } from "@/components/dashboard/Spinner";
 
 export const metadata: Metadata = {
   title: "Favoritos",
@@ -10,6 +12,7 @@ export default async function PokemonsPage() {
   return (
     <div className="flex flex-col p-2">
       <h1 className="text-4xl my-2">Tus favoritos</h1>
+
       <FavoritePokemon />
     </div>
   );

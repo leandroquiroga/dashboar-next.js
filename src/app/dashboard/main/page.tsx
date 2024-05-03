@@ -1,9 +1,8 @@
 import { WidgetsGrid } from "@/components";
 
-
 export const metadata = {
- title: 'Admin Dashboard',
- description: 'This is the admin dashboard page',
+  title: "Admin Dashboard",
+  description: "This is the admin dashboard page",
 };
 
 export default function MainPage() {

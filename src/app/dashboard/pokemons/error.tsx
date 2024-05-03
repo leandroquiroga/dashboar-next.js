@@ -1,13 +1,13 @@
-'use client'
+"use client";
 
 import { useEffect } from "react";
 
 interface ErrorPage {
   error: Error & { digest?: string };
-  reset: () => void
+  reset: () => void;
 }
 
-export default function Error({error, reset}: ErrorPage) {
+export default function Error({ error, reset }: ErrorPage) {
   useEffect(() => {
     console.log(error);
   }, [error]);

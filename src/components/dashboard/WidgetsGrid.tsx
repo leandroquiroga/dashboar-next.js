@@ -1,11 +1,10 @@
-'use client';
-import React from 'react'
-import { SimpleWidget } from './SimpleWidget';
-import { RiShoppingCartLine } from 'react-icons/ri';
-import { useAppSelector } from '@/store';
+"use client";
+import React from "react";
+import { SimpleWidget } from "./SimpleWidget";
+import { RiShoppingCartLine } from "react-icons/ri";
+import { useAppSelector } from "@/store";
 
 export const WidgetsGrid = () => {
-
   const counter = useAppSelector((state) => state.counter.count);
 
   return (
@@ -19,4 +18,4 @@ export const WidgetsGrid = () => {
       />
     </div>
   );
-}
+};

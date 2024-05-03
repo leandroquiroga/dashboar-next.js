@@ -1,9 +1,13 @@
-import Image from 'next/image';
-import React from 'react'
-import { RiDashboardLine, RiCalculatorLine, RiArticleLine, RiFootballLine, RiHeart2Line } from 'react-icons/ri';
-import { SidebarMenuItems } from './SidebarMenuItems';
-
-
+import Image from "next/image";
+import React from "react";
+import {
+  RiDashboardLine,
+  RiCalculatorLine,
+  RiArticleLine,
+  RiFootballLine,
+  RiHeart2Line,
+} from "react-icons/ri";
+import { SidebarMenuItems } from "./SidebarMenuItems";
 
 const menuItem = [
   {
@@ -31,7 +35,6 @@ const menuItem = [
     title: "Favorites",
   },
 ];
-
 
 export const Sidebar = () => {
   return (
@@ -68,11 +71,10 @@ export const Sidebar = () => {
       </div>
 
       <div id="nav" className="w-full px-6">
-        {menuItem.map(item => (
+        {menuItem.map((item) => (
           <SidebarMenuItems key={item.title} {...item} />
         ))}
-
       </div>
     </div>
   );
-}
+};

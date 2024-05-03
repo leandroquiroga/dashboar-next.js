@@ -1,4 +1,3 @@
-
 import { PageNotFound, Sidebar } from "@/components";
 
 export default function NotFound() {

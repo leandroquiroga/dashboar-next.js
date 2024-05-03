@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import pokemon404 from '../../../../../public/pokemon404.svg';
+import pokemon404 from "../../../../../public/pokemon404.svg";
 
 export default function NotFound() {
   return (
@@ -31,4 +31,4 @@ export default function NotFound() {
       </div>
     </main>
   );
-};
+}

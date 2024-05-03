@@ -1,9 +1,11 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import React, { Suspense } from "react";
+import { useMemo } from "react";
 
 import { useAppSelector } from "@/store";
 import { PokemonGrid } from "./PokemonGrid";
 import { NotFavorites } from "./NotFavorites";
+import { Spinner } from "@/components/dashboard/Spinner";
 // import { SimplePokemon } from "../interfaces/simple-pokemon";
 
 export const FavoritePokemon = () => {
@@ -23,10 +25,13 @@ export const FavoritePokemon = () => {
 
   return (
     <>
-      {
-      favoritePokemons.length === 0 ?
-          (<NotFavorites /> ) : ( <PokemonGrid pokemons= { favoritePokemons } / >)
-      }
+      <Suspense fallback={<Spinner />}>
+        {favoritePokemons.length === 0 ? (
+          <NotFavorites />
+        ) : (
+          <PokemonGrid pokemons={favoritePokemons} />
+        )}
+      </Suspense>
     </>
   );
 };

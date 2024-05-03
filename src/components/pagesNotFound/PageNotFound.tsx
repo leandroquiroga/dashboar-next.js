@@ -1,5 +1,5 @@
-import React from 'react'
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
 export const PageNotFound = () => {
   return (
@@ -21,4 +21,4 @@ export const PageNotFound = () => {
       </button>
     </main>
   );
-}
+};
