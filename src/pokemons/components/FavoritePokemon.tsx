@@ -1,10 +1,10 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { useAppSelector } from "@/store";
 import { PokemonGrid } from "./PokemonGrid";
 import { NotFavorites } from "./NotFavorites";
-import { SimplePokemon } from "../interfaces/simple-pokemon";
+// import { SimplePokemon } from "../interfaces/simple-pokemon";
 
 export const FavoritePokemon = () => {
   const favoritesPokemonsState = useAppSelector(
@@ -15,15 +15,18 @@ export const FavoritePokemon = () => {
     return Object.values(favoritesPokemonsState);
   }, [favoritesPokemonsState]);
 
-  const [pokemons, setPokemons] = useState<SimplePokemon[]>(favoritePokemons);
+  // const [pokemons, setPokemons] = useState<SimplePokemon[]>(favoritePokemons);
+
+  // useEffect(() => {
+  //   setPokemons(favoritePokemons);
+  // }, [favoritePokemons]);
 
   return (
     <>
-      {pokemons.length === 0 ? (
-        <NotFavorites />
-      ) : (
-        <PokemonGrid pokemons={pokemons} />
-      )}
+      {
+      favoritePokemons.length === 0 ?
+          (<NotFavorites /> ) : ( <PokemonGrid pokemons= { favoritePokemons } / >)
+      }
     </>
   );
 };
